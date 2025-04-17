@@ -41,7 +41,7 @@ const Grade = (r) => {
         console.log("You need to work much harder.")
         break;
         default:
-            console.log("Invalid Input")
+            console.log("un correct input")
     }
 }
 
