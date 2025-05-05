@@ -12,13 +12,15 @@ const books = [
   
   
     let select = Number(prompt(`
-      -----------Choose what you want----------
+      <-----------Choose what you want---------->
     1.Register User (Name + ID)
     2.Borrow a Book
     3.Return a Book
-    4.Display Users
+    4.Display Users and books Available
       `));
     let id = users.length
+    let borrowDate = null
+    let returnDate = null
     while(select) {
 
       switch (select) {
@@ -40,8 +42,10 @@ const books = [
         case 2:
           let id2 = prompt("Please enter your ID to borrow.")
           let bookTitle = prompt("Please enter boook you want to borrow.")
+          let bDate = prompt("Please enter borrowing date:'YYYY-DD-MM'")
+             borrowDate = new Date(bDate)
           let user = users.find((user)=>user.id === id2)
-          
+        
           if(!user) {
             alert("User not found please Register first.")
             break;
@@ -71,6 +75,10 @@ const books = [
           case 3:
             let stuID = prompt("Please enter your ID.")
             let isUser = users.find((user)=>user.id === stuID)
+           let retDate = prompt("Please enter returned date.'YYYY-MM-DD'")
+            returnDate = new Date(retDate)
+            let difference = returnDate - borrowDate
+            console.log("Difference Date: ",difference)
             if(!isUser) {
               alert("Please enter valid ID")
               break;
@@ -100,6 +108,8 @@ const books = [
            case 4:
             console.log("Users List")
             console.log(JSON.stringify(users))
+            console.log("Books List")
+            console.log(JSON.stringify(books))
           select = Number(prompt("Please select what you want"));
             break;
       }
